@@ -2,8 +2,9 @@
 
 namespace MagicVilla_Villa_API.Models.Dto
 {
-    public class VillaDTO
+    public class VillaUpdateDTO
     {
+        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -15,8 +16,10 @@ namespace MagicVilla_Villa_API.Models.Dto
         [Required]
         public double Rate { get; set; }
 
+        [Required]
         public int Sqft { get; set; }
 
+        [Required]
         public int Occupancy { get; set; }
 
         public string ImageUrl { get; set; }
