@@ -1,9 +1,16 @@
+using MagicVilla_Villa_API.Data;
 using MagicVilla_Villa_API.Logging;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using MySqlConnector;
+using MagicVilla_Villa_API;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddMySqlDataSource(builder.Configuration.GetConnectionString("Default")!);
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseMySql("server=localhost;port=3306;user=root;password=0000;database=magic_villa", new MySqlServerVersion(new System.Version(7, 0, 0))));
 // Add services to the container.
-
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddControllers(option =>
 {
     //option.ReturnHttpNotAcceptable = true;
@@ -11,7 +18,6 @@ builder.Services.AddControllers(option =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ILogging, Logging>();
 
 var app = builder.Build();
 

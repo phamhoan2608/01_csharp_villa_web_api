@@ -2,9 +2,8 @@
 
 namespace MagicVilla_Villa_API.Models.Dto
 {
-    public class VillaDTO
+    public class VillaCreateDTO
     {
-        public int Id { get; set; }
 
         [Required]
         [MaxLength(30)]
@@ -25,7 +24,7 @@ namespace MagicVilla_Villa_API.Models.Dto
 
         public override string? ToString()
         {
-            return "VillaDTO [id=" + this.Id + ", Name = " + this.Name + ", Occupancy = " + this.Occupancy + ", Sqft = " + this.Sqft+ "]";
+            return "VillaDTO [Name = " + this.Name + ", Occupancy = " + this.Occupancy + ", Sqft = " + this.Sqft+ "]";
         }
     }
 }
