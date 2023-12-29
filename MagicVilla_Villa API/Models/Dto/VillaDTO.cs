@@ -22,10 +22,5 @@ namespace MagicVilla_Villa_API.Models.Dto
         public string ImageUrl { get; set; }
 
         public string Amenity { get; set; }
-
-        public override string? ToString()
-        {
-            return "VillaDTO [id=" + this.Id + ", Name = " + this.Name + ", Occupancy = " + this.Occupancy + ", Sqft = " + this.Sqft+ "]";
-        }
     }
 }
