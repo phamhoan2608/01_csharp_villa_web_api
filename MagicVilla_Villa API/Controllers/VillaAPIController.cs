@@ -3,6 +3,7 @@ using MagicVilla_Villa_API.Data;
 using MagicVilla_Villa_API.Logging;
 using MagicVilla_Villa_API.Models;
 using MagicVilla_Villa_API.Models.Dto;
+using MagicVilla_Villa_API.Repository;
 using MagicVilla_Villa_API.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,11 @@ namespace MagicVilla_Villa_API.Controllers
     public class VillaAPIController : ControllerBase
     {
         //private readonly ApplicationDbContext _db;
-        private readonly IRepository<Villa> _dbVilla;
+        private readonly IVillaRepository _dbVilla;
         private readonly IMapper _mapper;
 
 
-        public VillaAPIController(IRepository<Villa> dbVilla, IMapper mapper)
+        public VillaAPIController(IVillaRepository dbVilla, IMapper mapper)
         {
             _dbVilla = dbVilla;
             _mapper = mapper;
@@ -32,7 +33,6 @@ namespace MagicVilla_Villa_API.Controllers
             IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
 
             return Ok(_mapper.Map<List<VillaDTO>>(villaList));
-            //return Ok(await _dbVilla.GetAllAsync());
         }
 
         [HttpGet("{id:int}", Name = "GetVilla")]

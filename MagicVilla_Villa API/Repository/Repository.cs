@@ -23,7 +23,7 @@ namespace MagicVilla_Villa_API.Repository
             await SaveAsync();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)
+        public async Task<T> GetAsync(Expression<Func<T, bool>>? filter = null, bool tracked = true)
         {
             IQueryable<T> query = _dbSet;
             if (!tracked)
